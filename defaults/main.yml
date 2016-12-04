@@ -2,4 +2,10 @@
 mocp_apt_packages:
   - moc
 
+# Dict of config items for writing to `~/.moc/config`.
+# Will be interpolated as `key = value` options.
 mocp_config: {}
+
+# Dict of keymap settings for writing to `~/.moc/keymap`.
+# Will be interpolated as `key = value` options.
+mocp_keymap: {}

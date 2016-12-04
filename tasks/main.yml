@@ -17,3 +17,8 @@
   template:
     src: mocp-config.j2
     dest: "~/.moc/config"
+
+- name: Copy moc keymap template.
+  template:
+    src: mocp-keymap.j2
+    dest: "~/.moc/keymap"
