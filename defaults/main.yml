@@ -1,4 +1,5 @@
 ---
+# List of apt packages to install.
 mocp_apt_packages:
   - moc
 

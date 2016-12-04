@@ -1,38 +1,47 @@
-Role Name
-=========
+mocp Ansible role
+=================
 
-A brief description of the role goes here.
+Installs and configures [mocp], Music On Console Player.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Assumes a Debian-based host.
 
 Role Variables
 --------------
+```yaml
+# List of apt packages to install.
+mocp_apt_packages:
+  - moc
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+# Dict of config items for writing to `~/.moc/config`.
+# Will be interpolated as `key = value` options.
+mocp_config: {}
 
-Dependencies
-------------
+# Dict of keymap settings for writing to `~/.moc/keymap`.
+# Will be interpolated as `key = value` options.
+mocp_keymap: {}
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+# Override the default keybindings to make mocp more vim-like.
+mocp_use_vim_keybindings: False
+```
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: desktops
+  roles:
+    - role: conorsch.mocp
+      mocp_use_vim_keybindings: yes
+```
 
 License
 -------
 
-BSD
+MIT
 
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+[mocp]: https://github.com/zcoder/mocp
