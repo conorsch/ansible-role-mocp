@@ -1,3 +1,5 @@
 ---
 mocp_apt_packages:
   - moc
+
+mocp_config: {}
