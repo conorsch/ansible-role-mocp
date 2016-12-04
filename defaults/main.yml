@@ -9,3 +9,6 @@ mocp_config: {}
 # Dict of keymap settings for writing to `~/.moc/keymap`.
 # Will be interpolated as `key = value` options.
 mocp_keymap: {}
+
+# Override the default keybindings to make mocp more vim-like.
+mocp_use_vim_keybindings: False
