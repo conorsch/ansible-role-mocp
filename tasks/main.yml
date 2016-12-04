@@ -1,2 +1,7 @@
 ---
-# tasks file for mocp
+- name: Install mocp.
+  become: yes
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ mocp_apt_packages }}"
