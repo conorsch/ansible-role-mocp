@@ -25,6 +25,8 @@ mocp_keymap: {}
 
 # Override the default keybindings to make mocp more vim-like.
 mocp_use_vim_keybindings: False
+
+mocp_music_directory: ~/Music
 ```
 
 Example Playbook
