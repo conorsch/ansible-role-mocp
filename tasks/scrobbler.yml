@@ -40,6 +40,7 @@
     section: scrobbler
     option: password
     value: "{{ mocp_scrobbler_password }}"
+  no_log: true
   when: scrobbler_password_hash_check_result.rc != 0
 
 - name: Create systemd user directory.
@@ -48,7 +49,14 @@
     path: .config/systemd/user
 
 - name: Install mocp scrobbler systemd unit file.
-  file:
+  copy:
     src: scrobbler.service
     dest: .config/systemd/user/scrobbler.service
     mode: "0600"
+
+- name: Start scrobbler service.
+  systemd:
+    user: yes
+    name: scrobbler.service
+    state: started
+    enabled: yes
