@@ -10,6 +10,38 @@
     owner: root
     group: root
 
+- name: Create scrobbler config directory.
+  file:
+    state: directory
+    path: .mocpscrob
+
+# On first run, the scrobbler script will convert the plaintext
+# password value `password` to `password_md5` with a hashed value.
+- name: Check if scrobbler password is already hashed.
+  command: grep -qP '^password_md5' .mocpscrob/config
+  changed_when: false # read-only task
+  ignore_errors: true # file might not exist yet
+  register: scrobbler_password_hash_check_result
+
+- name: Write scrobbler config (username).
+  ini_file:
+    dest: .mocpscrob/config
+    backup: yes
+    create: yes
+    section: scrobbler
+    option: login
+    value: "{{ mocp_scrobbler_username }}"
+
+- name: Write scrobbler config (hashed password).
+  ini_file:
+    dest: .mocpscrob/config
+    backup: yes
+    create: yes
+    section: scrobbler
+    option: password
+    value: "{{ mocp_scrobbler_password }}"
+  when: scrobbler_password_hash_check_result.rc != 0
+
 - name: Create systemd user directory.
   file:
     state: directory
