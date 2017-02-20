@@ -1,4 +1,4 @@
-{{ ansible_managed }}
+# {{ ansible_managed }}
 
 # This is a configuration file for the MOC player.  It should be named
 # 'config' and placed in the ~/.moc directory.  As this file can specify
@@ -8,9 +8,15 @@
 # values, and therefore commented.
 
 ### BEGIN Ansible-managed options ###
+{# MusicDir must be declared before FastDirs #}
+{% if 'MusicDir' in mocp_config %}
+MusicDir = "{{ mocp_config.MusicDir }}"
+{% endif %}
 
 {% for k, v in mocp_config.iteritems() %}
+{% if k != 'MusicDir' %}
 {{ k }} = {{ v }}
+{% endif %}
 {% endfor %}
 
 ### END Ansible-managed options ###
