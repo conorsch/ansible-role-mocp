@@ -15,3 +15,12 @@ mocp_keymap: {}
 mocp_use_vim_keybindings: False
 
 mocp_music_directory: ~/Music
+
+# Whether to enable scrobbling to Last.fm. Requires auth vars below.
+mocp_configure_scrobbler: false
+
+# Credentials for posting to Last.fm. The username and password should
+# be plaintext values (e.g. vault-encrypted). The scrobbler script will
+# automatically convert the plaintext password to an MD5 hash.
+mocp_scrobbler_username: foo
+mocp_scrobbler_password: bar
