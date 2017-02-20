@@ -26,3 +26,6 @@
   template:
     src: mocp-keymap.j2
     dest: "~/.moc/keymap"
+
+- include: scrobbler.yml
+  when: mocp_configure_scrobbler

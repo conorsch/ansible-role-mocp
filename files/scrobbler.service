@@ -1,0 +1,8 @@
+[Unit]
+Description=Music Player On Console (mocp) Scrobbler Daemon
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/bin/mocp-scrobbler
+
+[Install]
+WantedBy=default.target

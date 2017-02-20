@@ -1,0 +1,22 @@
+---
+- name: Install mocp scrobbler.
+  become: yes
+  get_url:
+    url: 'https://raw.githubusercontent.com/fluxid/mocp-scrobbler/master/mocp-scrobbler.py'
+    dest: /usr/local/bin/mocp-scrobbler
+    # The git repo hasn't changed in 6 years, so version-locking on the most recent commit.
+    sha256sum: d6f8e9c28473489e20394e051f8ef800f1c2ac5e8185d6052b2b2aef4b1e17f7
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Create systemd user directory.
+  file:
+    state: directory
+    path: .config/systemd/user
+
+- name: Install mocp scrobbler systemd unit file.
+  file:
+    src: scrobbler.service
+    dest: .config/systemd/user/scrobbler.service
+    mode: "0600"
