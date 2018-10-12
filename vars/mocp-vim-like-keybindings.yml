@@ -56,7 +56,6 @@ mocp_keymap:
   go_to_playing_file: G
   go_to_a_directory: g
   go_up: y
-  next_search: ^g ^n DOWN
   cancel: ^x ESCAPE
   go_url: ^o
   volume_10: M-1
