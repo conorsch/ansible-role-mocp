@@ -56,7 +56,8 @@
 
 - name: Start scrobbler service.
   systemd:
-    user: yes
+    scope: user
     name: scrobbler.service
     state: started
+    daemon_reload: yes
     enabled: yes

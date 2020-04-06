@@ -13,7 +13,7 @@
 MusicDir = "{{ mocp_config.MusicDir }}"
 {% endif %}
 
-{% for k, v in mocp_config.iteritems() %}
+{% for k, v in mocp_config.items() %}
 {% if k != 'MusicDir' %}
 {{ k }} = {{ v }}
 {% endif %}

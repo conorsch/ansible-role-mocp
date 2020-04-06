@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
 
-{% for k, v in mocp_keymap.iteritems() %}
+{% for k, v in mocp_keymap.items() %}
 {{ k }} = {{ v }}
 {% endfor %}
